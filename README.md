@@ -294,7 +294,7 @@ git clone ---recursive git@github.com:ShawnshanksGui/multiverse.git
 
 ```
 
-cd multiverse/multiverse_system/extern/network_backend/ns3/simulation/
+cd path_to_workdir/multiverse/multiverse_system/extern/network_backend/ns3/simulation/
 
 ./waf configure (only required once)
 
@@ -337,7 +337,7 @@ git clone ---recursive git@github.com:ShawnshanksGui/multiverse.git
 
 ```
 
-cd multiverse/multiverse_network/
+cd path_to_workdir/multiverse/multiverse_network/
 
 mkdir build
 
@@ -370,9 +370,10 @@ pip install -e .
 
 **1. Start system simulator**
 
-  
+
 
 ```
+cd path_to_workdir/multiverse/multiverse_system
 
 ./build/astra_ns3/build.sh -d
 
@@ -389,6 +390,7 @@ pip install -e .
   
 
 ```
+cd path_to_workdir/multiverse/multiverse_network/
 
 bash run.sh
 
@@ -454,8 +456,29 @@ python scripts/run_ori.py --num_env $num_env --enable_gpu_sim 'cpu' --fattree_K 
 | `-c  --cc_method`          | congestion control method(0 is DCQCN, 1 is HPCC, ...)                         | 0 |` 
 
 #### Run Simulation
+**1. Start system simulator**
+
+```
+
+./build/astra_ns3/build.sh -d
+
+```
+
+
+**2. Start network simulator**
+
+
+```
+
+bash run.sh
+
+```
+
+
+
 
 #### Multiverse Ouput
+
 
 
 
