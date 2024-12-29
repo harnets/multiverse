@@ -1,0 +1,6 @@
+[submodule "multiverse_network"]
+	path = multiverse_network
+	url = git@github.com:ShawnshanksGui/multiverse_network.git
+[submodule "multiverse_system"]
+	path = multiverse_system
+	url = git@github.com:tiancai4652/multiverse_system.git
