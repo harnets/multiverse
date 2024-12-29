@@ -210,7 +210,7 @@ docker run -itd --privileged -v path_to_workdir:path_to_workdir -p 11110:22 --gp
 
 cd ./path_to_workdir
 
-git clone ---recursive git@github.com:ShawnshanksGui/multiverse.git
+git clone --recursive git@github.com:ShawnshanksGui/multiverse.git
 
 cd path_to_workdir/multiverse/multiverse_system/
 
@@ -236,7 +236,7 @@ docker run -itd --privileged -v path_to_workdir/multiverse/:path_to_workdir/mult
 
 cd ./path_to_workdir
 
-git clone ---recursive git@github.com:ShawnshanksGui/multiverse.git
+git clone --recursive git@github.com:ShawnshanksGui/multiverse.git
 
 cd path_to_workdir/multiverse/multiverse_network/
 
