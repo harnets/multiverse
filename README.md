@@ -111,13 +111,6 @@ Below is the architecture of Multiverse 1.0. In the coming months we will releas
 
 - [Training GPT-13B with 16 NPUs, TP group size=4, DP group size = 16, Fattree K=8](#1--training-gpt-13b-with-16-npus-tp-group-size4-dp-group-size--32-fattree-k8)
 
-  
-
-  
-
-- [Training GPT-13B with 1024 NPUs, TP group size=8, PP group size = 1, DP group size = 16, HPN](#)
-
-  
 
   
 
