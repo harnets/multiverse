@@ -194,7 +194,7 @@ So far, the system simulator and the network simulator require different specifi
 
   
 
-### Build with Docker Recommended
+### Build with Docker (Recommended)
 
   
 
