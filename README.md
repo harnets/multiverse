@@ -210,9 +210,19 @@ docker run -itd --privileged -v path_to_workdir:path_to_workdir -p 11110:22 --gp
 
 cd ./path_to_workdir
 
-git clone --recursive git@github.com:ShawnshanksGui/multiverse.git
+git clone git@github.com:Harnets/multiverse.git
 
-cd path_to_workdir/multiverse/multiverse_system/
+git submodule init 
+
+git submodule update multiverse_system
+
+cd path_to_workdir/multiverse/multiverse_system
+
+cd astra-sim
+
+git submodule init
+
+git submodule update
 
 cd extern/network_backend/ns3/simulation/
 
@@ -236,8 +246,7 @@ docker run -itd --privileged -v path_to_workdir/multiverse/:path_to_workdir/mult
 
 cd ./path_to_workdir
 
-git clone --recursive git@github.com:ShawnshanksGui/multiverse.git
-
+git clone --recursive git@github.com:Harnets/multiverse.git
 cd path_to_workdir/multiverse/multiverse_network/
 
 mkdir build
@@ -277,7 +286,7 @@ The process can be seen in the README of [multiverse system](https://github.com/
 
 ```
 
-git clone ---recursive git@github.com:ShawnshanksGui/multiverse.git
+git clone git@github.com:Harnets/multiverse.git
 
 ```
 
@@ -286,6 +295,19 @@ git clone ---recursive git@github.com:ShawnshanksGui/multiverse.git
 **3. Complete the build for the system simulator**
 
 ```
+cd path_to_workdir/multiverse/multiverse_system
+
+git submodule init 
+
+git submodule update multiverse_system
+
+cd path_to_workdir/multiverse/multiverse_system
+
+cd astra-sim
+
+git submodule init
+
+git submodule update
 
 cd path_to_workdir/multiverse/multiverse_system/extern/network_backend/ns3/simulation/
 
@@ -307,7 +329,7 @@ cd path_to_workdir/multiverse/multiverse_system
 
 **1. Prepare the running environment**
 
-The process can be seen in the README of [multiverse network](https://github.com/ShawnshanksGui/multiverse_network.git)
+The process can be seen in the README of [multiverse network](https://github.com/Harnet/multiverse_network.git)
 
 
   
@@ -318,7 +340,7 @@ The process can be seen in the README of [multiverse network](https://github.com
 
 ```
 
-git clone ---recursive git@github.com:ShawnshanksGui/multiverse.git
+git clone ---recursive git@github.com:Harnets/multiverse_1.git
 
 ```
 
