@@ -143,7 +143,7 @@ Below is the architecture of Multiverse 1.0. In the coming months we will releas
 -  **System Simulator**: Built on the `astrasim-1.0-ns3` framework for LLM framework-level simulation, added shared memory communication method and adapted the new network layer implementation to support the new network simulator, currently it runs on CPUs, in the future it will also be accelerated by GPU.
   
 
--  **Network Simulator**: Accelerated by Data-oriented Design (DOD) paradigm and GPU.
+-  **Network Simulator**: Accelerated by Data-oriented Design (DOD) paradigm and GPU. It also can be run in CPU, which means that both System Simulator and Network Simulator are run in CPU.
 
   
 
@@ -340,7 +340,7 @@ The process can be seen in the README of [multiverse network](https://github.com
 
 ```
 
-git clone ---recursive git@github.com:Harnets/multiverse_1.git
+git clone --recursive git@github.com:Harnets/multiverse.git
 
 ```
 
@@ -407,7 +407,7 @@ cd path_to_workdir/multiverse/multiverse_system
 ```
 cd path_to_workdir/multiverse/multiverse_network/
 
-bash run.sh
+bash run.sh ("--enable_gpu_sim" controls the network simulator is run cpu or gpu)
 
 ```
 
@@ -443,7 +443,7 @@ bash run.sh
 
 ```
 
-python scripts/run_ori.py --num_env $num_env --enable_gpu_sim 'cpu' --fattree_K $fattree_K --cc_method $cc_method
+python scripts/run.py --num_env $num_env --enable_gpu_sim 'cpu' --fattree_K $fattree_K --cc_method $cc_method
 
 ```
   
