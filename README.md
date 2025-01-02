@@ -520,7 +520,7 @@ bash run.sh
 
 Contributions are welcome! Feel free to report issues or submit pull requests. Please follow our contribution guidelines.
 
-## Contact
+## Contact Us
 Fei Gui (fei467475649@gmail.com)
 
 ## License
