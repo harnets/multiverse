@@ -38,6 +38,7 @@ Multiverse is a GPU-accelerated AI training simulator with high performance and 
 - Congestion control algorithms: DCQCN.
 
   
+It's worth mentioning that Multiverse can also **run completely on the CPUs**, and it still applies Data-oriented Design (DOD) ideas to improve simulation efficiency.
 
 Below is the architecture of Multiverse 1.0. In the coming months we will release Multiverse 2.0, which is fully GPU-accelerated and supports more LLM training options.
 
@@ -407,7 +408,7 @@ cd path_to_workdir/multiverse/multiverse_system
 ```
 cd path_to_workdir/multiverse/multiverse_network/
 
-bash run.sh ("--enable_gpu_sim" controls the network simulator is run cpu or gpu)
+bash run.sh ("--enable_gpu_sim" controls the network simulator is run on CPUs or GPUs)
 
 ```
 
