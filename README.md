@@ -395,6 +395,7 @@ pip install -e .
 ### Start the Simulators
 
   
+Note: You need to first start the system simulator, then run the network simulator. The order matters!
 
   
 
