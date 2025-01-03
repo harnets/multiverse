@@ -509,12 +509,14 @@ bash run.sh
 
 ## Future Work
 
-| **Strategy/Algorithm**   | TP✔️                | DP✔️                      | PP                     | EP✔️                    |
+|    |                 |                       |                      |                    |
 |:-------------------------|:--------------------|:--------------------------|:-----------------------|:------------------------|
+| **Strategy/Algorithm**   | TP✔️                | DP✔️                      | PP                     | EP✔️                    |
 | **Collective Communication** | Ring allreduce✔️   | Halving doubling allreduce | Binary tree allreduce   | /                       |
 | **Topology**             | Fattree✔️          | HPN                       | Rail-optimized         | Bcube                   |
 | **Congestion Control**   | DCQCN✔️            | HPCC                      | Timely                 | Poseidon                |
 | **Scale up network DES** | PCIe               | NVLINK                    | TTPoE                  | UALink                  |
+
 
 
 
