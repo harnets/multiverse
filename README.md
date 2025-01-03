@@ -493,11 +493,6 @@ bash run.sh
 
 
 
-#### Multiverse Ouput
-
-
-
-
 ## Future Work
 
 | Strategy/Algorithm       | TP✔️                | DP✔️                      | PP                     | EP✔️                    |
