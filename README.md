@@ -202,12 +202,19 @@ So far, the system simulator and the network simulator require different specifi
 **1. System simulator**
 
   
+Pull docker from docker hub and create a docker container named as multiverse_ss.
 
 ```
-
-docker pull naspthu/multiverse-ss:latest
+docker pull naspthu/multiverse-ss:latest (docker pull cjie.eu.org/naspthu/multiverse-ss:latest)
 
 docker run -itd --privileged -v path_to_workdir:path_to_workdir -p 11110:22 --gpus all --security-opt seccomp=unconfined --ulimit memlock=-1:-1 --cap-add SYS_NICE --cap-add IPC_LOCK --ipc=host --restart=unless-stopped --name multiverse_ss naspthu/multiverse-ss:latest /bin/bash
+```
+
+
+Start up the container, execute the git clone of code and perform the compilation
+
+```
+sudo docker exec -it  multiverse_ss  /bin/bash
 
 cd ./path_to_workdir
 
@@ -239,11 +246,19 @@ cd path_to_workdir/multiverse/multiverse_system
 
 **2. Network simulator**
 
-```
+Pull docker from docker hub and create a docker container named as multiverse_net.
 
+```
 docker pull naspthu/multiverse-net:latest
 
 docker run -itd --privileged -v path_to_workdir/multiverse/:path_to_workdir/multiverse/ -p 11111:22 --gpus all --security-opt seccomp=unconfined --ulimit memlock=-1:-1 --cap-add SYS_NICE --cap-add IPC_LOCK --ipc=host --restart=unless-stopped --name multiverse_net naspthu/multiverse-net:latest /bin/bash
+```
+
+
+Start up the container, execute the git clone of code and perform the compilation
+
+```
+sudo docker exec -it  multiverse_net  /bin/bash
 
 cd ./path_to_workdir
 
