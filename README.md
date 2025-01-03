@@ -44,7 +44,7 @@ Below is the architecture of Multiverse 1.0. In the coming months we will releas
 
   
 
-![Archetecture](./docs/figs/multiverse1_arch_v2.png)
+![Archetecture](./docs/figs/multiverse1_arch.png)
 
   
 
@@ -205,7 +205,7 @@ So far, the system simulator and the network simulator require different specifi
 Pull docker from docker hub and create a docker container named as multiverse_ss.
 
 ```
-docker pull naspthu/multiverse-ss:latest (docker pull cjie.eu.org/naspthu/multiverse-ss:latest)
+docker pull naspthu/multiverse-ss:latest (or docker pull cjie.eu.org/naspthu/multiverse-ss:latest)
 
 docker run -itd --privileged -v path_to_workdir:path_to_workdir -p 11110:22 --gpus all --security-opt seccomp=unconfined --ulimit memlock=-1:-1 --cap-add SYS_NICE --cap-add IPC_LOCK --ipc=host --restart=unless-stopped --name multiverse_ss naspthu/multiverse-ss:latest /bin/bash
 ```
@@ -248,7 +248,7 @@ cd path_to_workdir/multiverse/multiverse_system
 Pull docker from docker hub and create a docker container named as multiverse_net.
 
 ```
-docker pull naspthu/multiverse-net:latest
+docker pull naspthu/multiverse-net:latest (or docker pull cjie.eu.org/naspthu/multiverse-net:latest)
 
 docker run -itd --privileged -v path_to_workdir/multiverse/:path_to_workdir/multiverse/ -p 11111:22 --gpus all --security-opt seccomp=unconfined --ulimit memlock=-1:-1 --cap-add SYS_NICE --cap-add IPC_LOCK --ipc=host --restart=unless-stopped --name multiverse_net naspthu/multiverse-net:latest /bin/bash
 ```
