@@ -210,8 +210,7 @@ docker pull naspthu/multiverse-ss:latest (docker pull cjie.eu.org/naspthu/multiv
 docker run -itd --privileged -v path_to_workdir:path_to_workdir -p 11110:22 --gpus all --security-opt seccomp=unconfined --ulimit memlock=-1:-1 --cap-add SYS_NICE --cap-add IPC_LOCK --ipc=host --restart=unless-stopped --name multiverse_ss naspthu/multiverse-ss:latest /bin/bash
 ```
 
-
-Start up the container, execute the git clone of code and perform the compilation
+Start up the container, clone the code using git, and then perform the compilation.
 
 ```
 sudo docker exec -it  multiverse_ss  /bin/bash
@@ -255,7 +254,7 @@ docker run -itd --privileged -v path_to_workdir/multiverse/:path_to_workdir/mult
 ```
 
 
-Start up the container, execute the git clone of code and perform the compilation
+Start up the container, clone the code using git, and then perform the compilation.
 
 ```
 sudo docker exec -it  multiverse_net  /bin/bash
