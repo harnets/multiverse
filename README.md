@@ -257,7 +257,7 @@ docker run -itd --privileged -v path_to_workdir/multiverse/:path_to_workdir/mult
 Start up the container, clone the code using git, and then perform the compilation.
 
 ```
-sudo docker exec -it  multiverse_net  /bin/bash
+sudo docker exec -it  multiverse_net  /bin/bash 
 
 cd ./path_to_workdir
 
@@ -509,12 +509,14 @@ bash run.sh
 
 ## Future Work
 
-| Strategy/Algorithm       | TP✔️                | DP✔️                      | PP                     | EP✔️                    |
+| **Strategy/Algorithm**   | TP✔️                | DP✔️                      | PP                     | EP✔️                    |
 |:-------------------------|:--------------------|:--------------------------|:-----------------------|:------------------------|
-| Collective Communication | Ring allreduce✔️   | Halving doubling allreduce | Binary tree allreduce   | /                       |
-| Topology                 | Fattree✔️          | HPN                       | Rail-optimized         | Bcube                   |
-| Congestion Control       | DCQCN✔️            | HPCC                      | Timely                 | Poseidon                |
-| Scale up network DES     | PCIe               | NVLINK                    | TTPoE                  | UALink                  |
+| **Collective Communication** | Ring allreduce✔️   | Halving doubling allreduce | Binary tree allreduce   | /                       |
+| **Topology**             | Fattree✔️          | HPN                       | Rail-optimized         | Bcube                   |
+| **Congestion Control**   | DCQCN✔️            | HPCC                      | Timely                 | Poseidon                |
+| **Scale up network DES** | PCIe               | NVLINK                    | TTPoE                  | UALink                  |
+
+
 
 
 <small>✔️ indicates that the corresponding function is ready in Multiverse 1.0. Others are future works.</small>
