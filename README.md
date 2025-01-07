@@ -205,9 +205,9 @@ So far, the system simulator and the network simulator require different specifi
 Pull docker from docker hub and create a docker container named as multiverse_ss.
 
 ```
-docker pull naspthu/multiverse-ss:latest (or docker pull cjie.eu.org/naspthu/multiverse-ss:latest)
+docker pull naspthu/multiverse-ss:1.0.0 (or docker pull cjie.eu.org/naspthu/multiverse-ss:1.0.0)
 
-docker run -itd --privileged -v path_to_workdir:path_to_workdir -p 11110:22 --gpus all --security-opt seccomp=unconfined --ulimit memlock=-1:-1 --cap-add SYS_NICE --cap-add IPC_LOCK --ipc=host --restart=unless-stopped --name multiverse_ss naspthu/multiverse-ss:latest /bin/bash
+docker run -itd --privileged -v path_to_workdir:path_to_workdir -p 11110:22 --gpus all --security-opt seccomp=unconfined --ulimit memlock=-1:-1 --cap-add SYS_NICE --cap-add IPC_LOCK --ipc=host --restart=unless-stopped --name multiverse_ss naspthu/multiverse-ss:1.0.0 /bin/bash
 ```
 
 Start up the container, clone the code using git, and then perform the compilation.
