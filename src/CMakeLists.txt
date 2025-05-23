@@ -1,6 +1,5 @@
 set(SIMULATOR_SRCS
     collective/topo_logic.hpp
-    collective/topo_logic.cpp
     types.hpp
     sim.hpp sim.inl sim.cpp
     level_gen.hpp level_gen.cpp
