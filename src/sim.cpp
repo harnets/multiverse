@@ -5,6 +5,8 @@
 
 #include <algorithm>
 
+#include "collective/topo_logic.hpp"
+
 using namespace madrona;
 using namespace madrona::math;
 using namespace madrona::phys;
@@ -2940,6 +2942,18 @@ Sim::Sim(Engine &ctx,
     ctx.get<CommModel>(sc).reduce_scatter_implementation = CommImplementationType::Ring;
     ctx.get<CommModel>(sc).all_to_all_implementation = CommImplementationType::Ring;
     ctx.data().sys_config_entity = sc;
+
+    // collective topo
+    RingTopology ring_topo;
+    ring_topo.ring_id = 0;
+    ring_topo.total_nodes_in_ring = 10;
+    ring_topo.index_in_ring = 0;
+    ring_topo.dimension = Dimension::Local;
+    ring_topo.id_to_index[0] = 0;
+    ring_topo.index_to_id[1] = 1;
+    ring_topo.index_to_id[2] = 2;
+    ring_topo.id_to_index[3] = 3;
+    
 
 }
 
