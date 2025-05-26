@@ -9,7 +9,7 @@ using namespace madrona;
 using namespace madrona::math;
 using namespace madrona::phys;
 
-#define PRINT_PKT_LOG 1
+#define PRINT_PKT_LOG 0
 
 
 // #define PRINT_SYS_LOG 1
@@ -19,7 +19,7 @@ using namespace madrona::phys;
 
 #define SYS_CHECK false
 
-#define ENABLE_TEST false
+#define ENABLE_TEST true
 
 #define MAX_MODE_16_LIMIT true
 
@@ -815,7 +815,7 @@ uint32_t flow_id = 0;
 
 inline void setFlow(Engine &ctx, uint64_t comm_src, uint64_t comm_dst, uint64_t flow_size, uint32_t &flow_id) {
     ctx.data().flow_lock.lock();
-    flow_id++;
+    // flow_id++;
     ctx.data().flow_lock.unlock();
 
     Entity net_npu = ctx.data()._net_npus[comm_src]; 
@@ -2741,75 +2741,75 @@ void Sim::setupTasks(TaskGraphManager &taskgraph_mgr, const Config &cfg)
 
     // ------------------sys--------------------------------------------------------------
 
-    // auto sys_init = builder.addToGraph<ParallelForNode<Engine, init,
-    //                                                     ChakraNodesData>>({});
-    // auto sys_process_node = builder.addToGraph<ParallelForNode<Engine, processNpuNodes,
-    //                                                             NpuID, ChakraNodes, HardwareResource, ProcessingCompTask, ProcessingCommTasks>>({sys_init});
+    auto sys_init = builder.addToGraph<ParallelForNode<Engine, init,
+                                                        ChakraNodesData>>({});
+    auto sys_process_node = builder.addToGraph<ParallelForNode<Engine, processNpuNodes,
+                                                                NpuID, ChakraNodes, HardwareResource, ProcessingCompTask, ProcessingCommTasks>>({sys_init});
 
     // --------------------------------------------------------------------------------
 
-    auto get_flow_sys = builder.addToGraph<ParallelForNode<Engine, comm_set_flow, NET_NPU_ID, NewFlowQueue, \
-                                             SimTime, SimTimePerUpdate>>({}); 
+    // auto get_flow_sys = builder.addToGraph<ParallelForNode<Engine, comm_set_flow, NET_NPU_ID, NewFlowQueue, \
+    //                                          SimTime, SimTimePerUpdate>>({}); 
 
-    auto setup_flow_sys = builder.addToGraph<ParallelForNode<Engine, setup_flow, NET_NPU_ID, NewFlowQueue, \
-    SimTime, SimTimePerUpdate>>({get_flow_sys}); 
+    // auto setup_flow_sys = builder.addToGraph<ParallelForNode<Engine, setup_flow, NET_NPU_ID, NewFlowQueue, \
+    // SimTime, SimTimePerUpdate>>({get_flow_sys}); 
 
-    auto nic_receive_sys = builder.addToGraph<ParallelForNode<Engine, nic_receive, NIC_ID, \
-                                              BidPktBuf, NICRate, SimTime, SimTimePerUpdate>>({setup_flow_sys});
+    // auto nic_receive_sys = builder.addToGraph<ParallelForNode<Engine, nic_receive, NIC_ID, \
+    //                                           BidPktBuf, NICRate, SimTime, SimTimePerUpdate>>({setup_flow_sys});
 
-    auto flow_receive_sys = builder.addToGraph<ParallelForNode<Engine, flow_receive, FlowID, PktBuf, \
-                                           NICRate, HSLinkDelay, SimTime, SimTimePerUpdate, \
-                                           RecvBytes, L4Port, LastCNPTimestamp>>({nic_receive_sys});
+    // auto flow_receive_sys = builder.addToGraph<ParallelForNode<Engine, flow_receive, FlowID, PktBuf, \
+    //                                        NICRate, HSLinkDelay, SimTime, SimTimePerUpdate, \
+    //                                        RecvBytes, L4Port, LastCNPTimestamp>>({nic_receive_sys});
 
-    auto flow_send_sys = builder.addToGraph<ParallelForNode<Engine, flow_send, FlowID, Src, Dst, // dst net_npu
-                                                            L4Port, // layer 4 port
-                                                            FlowSize, StartTime, StopTime,
-                                                            NIC_ID, SndServerID, RecvServerID, // host pair id
-                                                            SndNxt, SndUna, FlowState,
-                                                            LastAckTimestamp, NxtPktEvent, PFCState, CC_Para,
-                                                            PktBuf, AckPktBuf,
-                                                            NICRate, HSLinkDelay, SimTime, SimTimePerUpdate>>({flow_receive_sys});
+    // auto flow_send_sys = builder.addToGraph<ParallelForNode<Engine, flow_send, FlowID, Src, Dst, // dst net_npu
+    //                                                         L4Port, // layer 4 port
+    //                                                         FlowSize, StartTime, StopTime,
+    //                                                         NIC_ID, SndServerID, RecvServerID, // host pair id
+    //                                                         SndNxt, SndUna, FlowState,
+    //                                                         LastAckTimestamp, NxtPktEvent, PFCState, CC_Para,
+    //                                                         PktBuf, AckPktBuf,
+    //                                                         NICRate, HSLinkDelay, SimTime, SimTimePerUpdate>>({flow_receive_sys});
 
-    auto check_flow_state_sys = builder.addToGraph<ParallelForNode<Engine, check_flow_state, NET_NPU_ID, CompletedFlowQueue, \
-                                                   SimTime, SimTimePerUpdate>>({flow_send_sys}); 
+    // auto check_flow_state_sys = builder.addToGraph<ParallelForNode<Engine, check_flow_state, NET_NPU_ID, CompletedFlowQueue, \
+    //                                                SimTime, SimTimePerUpdate>>({flow_send_sys}); 
 
-    auto nic_forward_sys = builder.addToGraph<ParallelForNode<Engine, nic_forward, \
-                                              NIC_ID, NICRate, SimTime, \
-                                              SimTimePerUpdate, BidPktBuf>>({check_flow_state_sys});
+    // auto nic_forward_sys = builder.addToGraph<ParallelForNode<Engine, nic_forward, \
+    //                                           NIC_ID, NICRate, SimTime, \
+    //                                           SimTimePerUpdate, BidPktBuf>>({check_flow_state_sys});
 
 
-    auto nic_transmit_sys = builder.addToGraph<ParallelForNode<Engine, nic_transmit, NIC_ID, \
-                                               NICRate, HSLinkDelay, \
-                                               SimTime, SimTimePerUpdate, \
-                                               BidPktBuf, TXHistory, \
-                                               NextHop, Seed>>({nic_forward_sys});
+    // auto nic_transmit_sys = builder.addToGraph<ParallelForNode<Engine, nic_transmit, NIC_ID, \
+    //                                            NICRate, HSLinkDelay, \
+    //                                            SimTime, SimTimePerUpdate, \
+    //                                            BidPktBuf, TXHistory, \
+    //                                            NextHop, Seed>>({nic_forward_sys});
 
-    auto set_forward_plan_sys = builder.addToGraph<ParallelForNode<Engine, set_forward_plan, \
-                                                   LocalPortID, GlobalPortID, \
-                                                   SwitchID, PktBuf, ForwardPlan, \
-                                                   SimTime, SimTimePerUpdate>>({nic_transmit_sys});
+    // auto set_forward_plan_sys = builder.addToGraph<ParallelForNode<Engine, set_forward_plan, \
+    //                                                LocalPortID, GlobalPortID, \
+    //                                                SwitchID, PktBuf, ForwardPlan, \
+    //                                                SimTime, SimTimePerUpdate>>({nic_transmit_sys});
 
-    auto forward_sys = builder.addToGraph<ParallelForNode<Engine, _forward, SchedTrajType, \
-                                          LocalPortID, GlobalPortID, PktQueue, SwitchID, \
-                                          SimTime, SimTimePerUpdate>>({set_forward_plan_sys});
+    // auto forward_sys = builder.addToGraph<ParallelForNode<Engine, _forward, SchedTrajType, \
+    //                                       LocalPortID, GlobalPortID, PktQueue, SwitchID, \
+    //                                       SimTime, SimTimePerUpdate>>({set_forward_plan_sys});
 
-    auto remove_pkts_sys = builder.addToGraph<ParallelForNode<Engine, remove_pkts, \
-                                              LocalPortID, GlobalPortID, PktBuf, ForwardPlan, \
-                                              SimTime, SimTimePerUpdate>>({forward_sys}); 
+    // auto remove_pkts_sys = builder.addToGraph<ParallelForNode<Engine, remove_pkts, \
+    //                                           LocalPortID, GlobalPortID, PktBuf, ForwardPlan, \
+    //                                           SimTime, SimTimePerUpdate>>({forward_sys}); 
 
-    auto transmit_sys = builder.addToGraph<ParallelForNode<Engine, transmit, SchedTrajType, \
-    PortType, LocalPortID, GlobalPortID, SwitchID, NextHop, NextHopType, PktQueue, TXHistory, \
-    SSLinkDelay, LinkRate, SimTime, SimTimePerUpdate, Seed>>({remove_pkts_sys});       
+    // auto transmit_sys = builder.addToGraph<ParallelForNode<Engine, transmit, SchedTrajType, \
+    // PortType, LocalPortID, GlobalPortID, SwitchID, NextHop, NextHopType, PktQueue, TXHistory, \
+    // SSLinkDelay, LinkRate, SimTime, SimTimePerUpdate, Seed>>({remove_pkts_sys});       
 
 
     // ------------------sys--------------------------------------------------------------
-    // auto sys_process_comm = builder.addToGraph<ParallelForNode<Engine, processCommCheckFlow,
-    //                                                             NpuID, NodeID, TaskFlows>>({transmit_sys});
+    auto sys_process_comm = builder.addToGraph<ParallelForNode<Engine, processCommCheckFlow,
+                                                                NpuID, NodeID, TaskFlows>>({sys_process_node});
     
-    // auto sys_remove_node=builder.addToGraph<ParallelForNode<Engine, removeNpuNodes,
-    // NpuID, ChakraNodes, HardwareResource, ProcessingCompTask, ProcessingCommTasks>>({sys_process_comm});
+    auto sys_remove_node=builder.addToGraph<ParallelForNode<Engine, removeNpuNodes,
+    NpuID, ChakraNodes, HardwareResource, ProcessingCompTask, ProcessingCommTasks>>({sys_process_comm});
     
-    // auto sys_skip_time = builder.addToGraph<ParallelForNode<Engine, checkSkipTime, NextProcessTimes>>({sys_remove_node});
+    auto sys_skip_time = builder.addToGraph<ParallelForNode<Engine, checkSkipTime, NextProcessTimes>>({sys_remove_node});
 
     // -----------------------------------------------------------------------------------
     
