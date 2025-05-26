@@ -215,7 +215,7 @@ sim.chakra_nodes_data_tensor().to_torch().copy_(data_tensor)
 FRAME_LEN = 1000
 start = time.time()
 # for i in range(args.num_updates):
-for i in range(100):
+for i in range(2):
     print("\n------------------------------------------------------------", i+1, "-th frame", (i+1)*FRAME_LEN, "--", (i+2)*FRAME_LEN, "------------------------------------------------------------\n")
     sim.step()
 

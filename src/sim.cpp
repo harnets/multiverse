@@ -2743,15 +2743,15 @@ void Sim::setupTasks(TaskGraphManager &taskgraph_mgr, const Config &cfg)
 
     // ------------------sys--------------------------------------------------------------
 
-    // auto sys_init = builder.addToGraph<ParallelForNode<Engine, init,
-    //                                                     ChakraNodesData>>({});
-    // auto sys_process_node = builder.addToGraph<ParallelForNode<Engine, processNpuNodes,
-    //                                                             NpuID, ChakraNodes, HardwareResource, ProcessingCompTask, ProcessingCommTasks>>({sys_init});
+    auto sys_init = builder.addToGraph<ParallelForNode<Engine, init,
+                                                        ChakraNodesData>>({});
+    auto sys_process_node = builder.addToGraph<ParallelForNode<Engine, processNpuNodes,
+                                                                NpuID, ChakraNodes, HardwareResource, ProcessingCompTask, ProcessingCommTasks>>({sys_init});
 
     // --------------------------------------------------------------------------------
 
     auto get_flow_sys = builder.addToGraph<ParallelForNode<Engine, comm_set_flow, NET_NPU_ID, NewFlowQueue, \
-                                             SimTime, SimTimePerUpdate>>({}); 
+                                             SimTime, SimTimePerUpdate>>({sys_process_node}); 
 
     auto setup_flow_sys = builder.addToGraph<ParallelForNode<Engine, setup_flow, NET_NPU_ID, NewFlowQueue, \
     SimTime, SimTimePerUpdate>>({get_flow_sys}); 
@@ -2944,15 +2944,12 @@ Sim::Sim(Engine &ctx,
     ctx.data().sys_config_entity = sc;
 
     // collective topo
-    RingTopology ring_topo;
-    ring_topo.ring_id = 0;
-    ring_topo.total_nodes_in_ring = 10;
-    ring_topo.index_in_ring = 0;
-    ring_topo.dimension = Dimension::Local;
-    ring_topo.id_to_index[0] = 0;
-    ring_topo.index_to_id[1] = 1;
-    ring_topo.index_to_id[2] = 2;
-    ring_topo.id_to_index[3] = 3;
+    RingTopology ring_topo(Dimension::Local, 2, 4, 1, 2);
+
+    printf("ring_topo.id_to_index[0]: %d\n", ring_topo.id_to_index[0]);
+    printf("ring_topo.index_to_id[1]: %d\n", ring_topo.index_to_id[1]);
+    printf("ring_topo.index_to_id[2]: %d\n", ring_topo.index_to_id[2]);
+    printf("ring_topo.id_to_index[3]: %d\n", ring_topo.id_to_index[3]);
     
 
 }
