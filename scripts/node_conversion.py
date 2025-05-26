@@ -16,7 +16,8 @@ class AttributeKey(Enum):
     comm_size = 2
     comm_src = 3
     comm_dst = 4
-    involved_dim=5
+    comm_type = 5
+    involved_dim=6
 
 # 定义占位符
 placeholder = 4294967295
@@ -51,7 +52,7 @@ def node_to_int_array(node: Node) -> List[int]:
             # 查找当前 AttributeKey 是否存在于 node.attr 中
             matching_attr = next((attr for attr in node.attr if attr.name == key.name), None)
             # 如果匹配到 AttributeKey，设置对应的值
-            if key.value in {1, 2, 3, 4}:  # 对应占用 2 个 int
+            if key.value in {1, 2, 3, 4,5}:  # 对应占用 2 个 int
                 key_ints = [placeholder] * 2
                 if matching_attr:
                     if matching_attr.boolVal is not None:
@@ -66,7 +67,7 @@ def node_to_int_array(node: Node) -> List[int]:
                     elif matching_attr.uint64Val is not None:
                         key_ints[0] = int(matching_attr.uint64Val & 0xFFFFFFFF)  # 低 32 位
                         key_ints[1] = int((matching_attr.uint64Val >> 32) & 0xFFFFFFFF)  # 高 32 位
-            elif key.value == 5:  # 对应占用 3 个 int
+            elif key.value == 6:  # 对应占用 3 个 int
                 key_ints = [placeholder] * 3
                 if matching_attr:
                     if matching_attr.boolList is not None:
