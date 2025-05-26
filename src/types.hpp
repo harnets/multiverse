@@ -922,7 +922,7 @@ struct Topo {
 
 
 // 每个 ChakraNode 占用 44 字节，等于 11 个 int
-#define INTS_PER_NODE 44
+#define INTS_PER_NODE 46
 
 #define MAX_CHAKRA_NODES 9 * 9999
 #define MAX_CHAKRA_NODP_NODES 99
@@ -1054,6 +1054,13 @@ struct Topo {
     {
         SysFlow flows[MAX_FLOW_NUM_PER_COMM_NODE];
 
+        TaskFlows()
+        {
+            for (int i = 0; i < MAX_FLOW_NUM_PER_COMM_NODE; ++i)
+            {
+                flows[i] = SysFlow(); // 初始化每个任务
+            }
+        }
         void updateFlows(const SysFlow flows_finish[], int flows_finish_size)
         {
             for (int i = 0; i < flows_finish_size; ++i)
@@ -1101,6 +1108,7 @@ struct Topo {
         uint64_t comm_size;
         uint64_t comm_src;
         uint64_t comm_dst;
+        uint64_t comm_type;
         bool involved_dim_1;
         bool involved_dim_2;
         bool involved_dim_3;

@@ -2093,6 +2093,9 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
             parsedNodes[validNodes].comm_dst = ((uint64_t)chakraNodesData.data[row][baseIndex + 1] << 32) | chakraNodesData.data[row][baseIndex];
             baseIndex += 2;
 
+            parsedNodes[validNodes].comm_type = ((uint64_t)chakraNodesData.data[row][baseIndex + 1] << 32) | chakraNodesData.data[row][baseIndex];
+            baseIndex += 2;
+
             parsedNodes[validNodes].involved_dim_1 = chakraNodesData.data[row][baseIndex];
             parsedNodes[validNodes].involved_dim_2 = chakraNodesData.data[row][baseIndex + 1];
             parsedNodes[validNodes].involved_dim_3 = chakraNodesData.data[row][baseIndex + 2];
@@ -2458,6 +2461,7 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
 
                     // create comm entity
                     Entity process_e = ctx.makeEntity<ProcessComm_E>();
+                    ctx.get<TaskFlows>(process_e) = TaskFlows();
                     ctx.get<NpuID>(process_e).value = id.value;
                     ctx.get<NodeID>(process_e).value = node.id;
                     uint32_t flow_id = processingCommTasks.getTotalFlowCount();
@@ -2502,6 +2506,7 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
 
                     // create comm entity
                     Entity process_e = ctx.makeEntity<ProcessComm_E>();
+                    ctx.get<TaskFlows>(process_e) = TaskFlows();
                     ctx.get<NpuID>(process_e).value = id.value;
                     ctx.get<NodeID>(process_e).value = node.id;
                     uint32_t flow_id = processingCommTasks.getTotalFlowCount();
@@ -2531,6 +2536,15 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
 
                     setFlow(ctx, src, dst, node.comm_size, flow_id);
 
+                    // for (int i = 0; i < 20; ++i)
+                    // {
+
+                    //         // ctx.get<TaskFlows>(process_e).flows[i].state = TaskState::FINISH;
+                    //         printf("&&&&&&&&&&&&&&&&&&&&test : flow size, flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
+                    //                ctx.get<TaskFlows>(process_e).flows[i].id, ctx.get<TaskFlows>(process_e).flows[i].comm_size, ctx.get<TaskFlows>(process_e).flows[i].comm_src, ctx.get<TaskFlows>(process_e).flows[i].comm_dst);
+                        
+                    // }
+
                     break;
                 }
                 case NodeType::COMM_COLL_NODE:
@@ -2547,6 +2561,7 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
 
                     // create comm entity
                     Entity process_e = ctx.makeEntity<ProcessComm_E>();
+                    ctx.get<TaskFlows>(process_e) = TaskFlows();
                     ctx.get<NpuID>(process_e).value = id.value;
                     ctx.get<NodeID>(process_e).value = node.id;
                     uint32_t flow_id = processingCommTasks.getTotalFlowCount();
@@ -2583,8 +2598,6 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
             printf("### sys2 ### : exec processCommCheckFlow.\n");
         }
 
-        SysFlow flows_finish[MAX_FLOW_NUM_PER_COMM_NODE];
-        uint32_t flow_finish_count = checkFlowFinish(ctx, npu_id.value, flows_finish);
         if (ENABLE_TEST)
         {
             for (int i = 0; i < 20; ++i)
@@ -2592,10 +2605,13 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
                 if (taskFlows.flows[i].state == TaskState::START)
                 {
                     taskFlows.flows[i].state = TaskState::FINISH;
-                    printf("test : flow id %d -> set flow finish.\n", taskFlows.flows[i].id);
-                }
+                    printf("test : flow size, flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
+                           taskFlows.flows[i].id, taskFlows.flows[i].comm_size, taskFlows.flows[i].comm_src, taskFlows.flows[i].comm_dst);}
             }
         }
+
+        SysFlow flows_finish[MAX_FLOW_NUM_PER_COMM_NODE];
+        uint32_t flow_finish_count = checkFlowFinish(ctx, npu_id.value, flows_finish);
 
         if (flow_finish_count > 0)
         {
@@ -2607,7 +2623,7 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
             printf("node id %d -> taskFlows.areAllTasksDone\n", node_id);
 
             ctx.get<ProcessingCommTasks>(ctx.data().chakra_nodes_entities[npu_id.value]).setFinish(node_id.value, getCurrentTime(ctx));
-        
+
             ctx.destroyEntity(ctx.data().node_flows_exec_entity[npu_id.value][node_id.value]);
         }
     }
