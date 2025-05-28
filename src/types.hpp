@@ -966,7 +966,7 @@ struct Topo {
         COMM_COLL_NODE = 4
     };
 
-    enum CollectiveCommType : int32_t
+    enum CollectiveCommType : uint64_t
     {
         ALL_REDUCE = 0,
         REDUCE = 1,
@@ -1108,7 +1108,7 @@ struct Topo {
         uint64_t comm_size;
         uint64_t comm_src;
         uint64_t comm_dst;
-        uint64_t comm_type;
+        CollectiveCommType comm_type;
         bool involved_dim_1;
         bool involved_dim_2;
         bool involved_dim_3;

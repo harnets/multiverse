@@ -2095,7 +2095,7 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
             parsedNodes[validNodes].comm_dst = ((uint64_t)chakraNodesData.data[row][baseIndex + 1] << 32) | chakraNodesData.data[row][baseIndex];
             baseIndex += 2;
 
-            parsedNodes[validNodes].comm_type = ((uint64_t)chakraNodesData.data[row][baseIndex + 1] << 32) | chakraNodesData.data[row][baseIndex];
+            parsedNodes[validNodes].comm_type = (CollectiveCommType)(((uint64_t)chakraNodesData.data[row][baseIndex + 1] << 32) | chakraNodesData.data[row][baseIndex]);
             baseIndex += 2;
 
             parsedNodes[validNodes].involved_dim_1 = chakraNodesData.data[row][baseIndex];
@@ -2551,11 +2551,72 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
                 }
                 case NodeType::COMM_COLL_NODE:
                 {
-                    ProcessingCommTask processingCommTask = ProcessingCommTask();
+
+                    // NPUID*10000+FLOWID
+                    //划分stream
+                    
+                    // uint64_t Sys::determine_chunk_size(uint64_t& size, ComType type) {
+                    //     uint64_t chunk_size = size / preferred_dataset_splits;
+                    //     // We want the collective size to have minimum size, otherwise, there is a
+                    //     // possibility of size overflow due to further dividing it to more
+                    //     // fine-grained messages
+                    //     if (type != ComType::All_Gather && this->total_nodes > chunk_size) {
+                    //         chunk_size = this->total_nodes;
+                    //         size = preferred_dataset_splits * chunk_size;
+                    //     }
+                    //     return chunk_size;
+                    // }
+
                     if (SYS_LOG && id.value == 0)
                     {
                         printf("processingCommTask: coll .\n");
                     }
+                    // for temp
+                    int npu_num=16;
+
+                    int streams_num = 2;
+                    int chunk_size = node.comm_size / streams_num;
+
+                    //  enum CollectiveCommType : uint64_t
+                    // {
+                    //     ALL_REDUCE = 0,
+                    //     REDUCE = 1,
+                    //     ALL_GATHER = 2,
+                    //     GATHER = 3,
+                    //     SCATTER = 4,
+                    //     BROADCAST = 5,
+                    //     ALL_TO_ALL = 6,
+                    //     REDUCE_SCATTER = 7,
+                    //     REDUCE_SCATTER_BLOCK = 8,
+                    //     BARRIER = 9
+                    // };
+
+                    switch (node.comm_type)
+                    {
+                        printf("comm type: %d\n", node.comm_type);
+                    case CollectiveCommType::ALL_REDUCE:
+                        break;
+                    case CollectiveCommType::REDUCE:
+                        break;
+                    case CollectiveCommType::ALL_GATHER:
+                        break;
+                    case CollectiveCommType::GATHER:
+                        break;
+                    case CollectiveCommType::SCATTER:
+                        break;
+                    case CollectiveCommType::BROADCAST:
+                        break;
+                    default:
+                    {
+                        if (SYS_LOG && id.value == 0)
+                        {
+                            printf("processingCommTask: unknown comm type .\n");
+                        }
+                    }
+                    }
+
+                    ProcessingCommTask processingCommTask = ProcessingCommTask();
+
                     processingCommTask.state = TaskState::START;
                     processingCommTask.node_id = node.id;
                     processingCommTask.flow_count = 1;
@@ -2575,9 +2636,7 @@ inline void flow_receive(Engine &ctx, FlowID &_flow_id, PktBuf &_recv_queue,
                     ctx.get<TaskFlows>(process_e).flows[0].state = TaskState::START;
                     ctx.get<TaskFlows>(process_e).flows[0].is_send = true;
 
-
-                    ctx.data().node_flows_exec_entity[id.value][node.id]= process_e;
-
+                    ctx.data().node_flows_exec_entity[id.value][node.id] = process_e;
 
                     // setFlow(Engine &ctx, uint64_t comm_src, uint64_t comm_dst, uint64_t comm_size, uint32_t flow_id)
                     setFlow(ctx, 0, 1, 1000, flow_id);
