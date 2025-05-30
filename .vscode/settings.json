@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "__node_handle": "cpp",
+        "array": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp",
+        "ratio": "cpp",
+        "tuple": "cpp",
+        "variant": "cpp",
+        "__hash_table": "cpp",
+        "type_traits": "cpp",
+        "forward_list": "cpp",
+        "functional": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "utility": "cpp",
+        "__locale": "cpp",
+        "locale": "cpp",
+        "thread": "cpp"
+    }
+}

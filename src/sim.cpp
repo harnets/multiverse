@@ -2488,6 +2488,54 @@ namespace madEscape
         printf("init npus over.\n");
     }
 
+    // 获取每个阶段通信（ring）次数
+    inline int get_comm_count_per_phase(CollectiveCommType comm_type,
+                                        CommImplementationType comm_implementation_type,int nodes_in_ring)
+    {
+        int stream_count = 0;
+        switch (comm_type)
+        {
+        case CollectiveCommType::ALL_REDUCE:
+            stream_count = 2 * (nodes_in_ring - 1);
+            break;
+            case CollectiveCommType::ALL_TO_ALL:
+            stream_count = ((nodes_in_ring - 1) * nodes_in_ring) / 2;
+            break;
+        default:
+            stream_count = nodes_in_ring - 1;
+        }
+        return stream_count;
+    }
+
+    // 获取每个阶段的flow大小和每个节点最终的数据量
+    inline void get_comm_size_per_flow(CollectiveCommType comm_type,
+                                       CommImplementationType comm_implementation_type, int data_size, int nodes_in_ring, int &msg_size, int &final_data_size)
+    {
+        msg_size = data_size;
+        switch (comm_type)
+        {
+        case CollectiveCommType::ALL_REDUCE:
+            final_data_size = data_size;
+            msg_size = data_size / nodes_in_ring;
+            break;
+        case CollectiveCommType::ALL_GATHER:
+            final_data_size = data_size * nodes_in_ring;
+            msg_size = data_size;
+            break;
+        case CollectiveCommType::REDUCE_SCATTER:
+            final_data_size = data_size / nodes_in_ring;
+            msg_size = data_size / nodes_in_ring;
+            break;
+        case CollectiveCommType::ALL_TO_ALL:
+            final_data_size = data_size;
+            msg_size = data_size / nodes_in_ring;
+            break;
+        default:
+            msg_size = data_size;
+            break;
+        }
+    }
+
     inline void processNpuNodes(Engine &ctx,
                                 NpuID &id,
                                 ChakraNodes &chakraNodes,
@@ -2658,8 +2706,8 @@ namespace madEscape
                 {
 
                     // NPUID*10000+FLOWID
-                    // 划分stream
 
+                    // 划分stream
                     // uint64_t Sys::determine_chunk_size(uint64_t& size, ComType type) {
                     //     uint64_t chunk_size = size / preferred_dataset_splits;
                     //     // We want the collective size to have minimum size, otherwise, there is a
@@ -2676,11 +2724,11 @@ namespace madEscape
                     {
                         printf("processingCommTask: coll .\n");
                     }
-                    // for temp
+                    // slice info, for temp
                     int npu_num = 16;
-
                     int streams_num = 2;
                     int chunk_size = node.comm_size / streams_num;
+                    int remain_size = node.comm_size % streams_num;
 
                     //  enum CollectiveCommType : uint64_t
                     // {
@@ -2696,26 +2744,86 @@ namespace madEscape
                     //     BARRIER = 9
                     // };
 
+                    for (size_t i = 0; i < chunk_size; i++)
+                    {
+                        /* code */
+                    }
+                    
+                    int data_size = chunk_size;
                     switch (node.comm_type)
                     {
                         printf("comm type: %d\n", node.comm_type);
                     case CollectiveCommType::ALL_REDUCE:
-                        break;
+
+                        // 拆解成细分阶段->Reduce_Scatter+All_Gather
+                        // break;
                     case CollectiveCommType::REDUCE:
-                        break;
+                        // break;
                     case CollectiveCommType::ALL_GATHER:
-                        break;
+                        // break;
                     case CollectiveCommType::GATHER:
-                        break;
+                        // break;
                     case CollectiveCommType::SCATTER:
-                        break;
+                        // break;
                     case CollectiveCommType::BROADCAST:
-                        break;
+                        // break;
                     default:
                     {
-                        if (SYS_LOG && id.value == 0)
+                        // if (SYS_LOG && id.value == 0)
+                        // {
+                        //     printf("processingCommTask: unknown comm type .\n");
+                        // }
+
+                        //
+                        // Entity sc = ctx.makeEntity<SysConfig>();
+                        // ctx.get<CommModel>(sc).all_reduce_implementation = CommImplementationType::Ring;
+                        // ctx.get<CommModel>(sc).all_gather_implementation = CommImplementationType::Ring;
+                        // ctx.get<CommModel>(sc).reduce_scatter_implementation = CommImplementationType::Ring;
+                        // ctx.get<CommModel>(sc).all_to_all_implementation = CommImplementationType::Ring;
+                        // ctx.data().sys_config_entity = sc;
+
+                        // step1: get comm implementation
+                        CommImplementationType comm_implementation_type = ctx.get<CommModel>(ctx.data().sys_config_entity).all_reduce_implementation;
+                        switch (comm_implementation_type)
                         {
-                            printf("processingCommTask: unknown comm type .\n");
+                        case CommImplementationType::Ring:
+                            // step2: get logic topo
+
+                            // node info
+                            // int node_id = node.id;
+                            // int node_type = node.type;
+                            // int node_comm_type = node.comm_type;
+                            // int node_comm_size = node.comm_size;
+                            // int node_comm_src = node.comm_src;
+                            // int node_comm_dst = node.comm_dst;
+                            // int node_comm_src_npu = node.comm_src_npu;
+
+                            // topo info for temp 3d
+                            int dims[] = {4, 4, 2};
+                            int dims_len = sizeof(dims) / sizeof(dims[0]);
+                            // demotion excute info for temp
+                            bool dim_1d_enable = node.involved_dim_1;
+                            bool dim_2d_enable = node.involved_dim_2;
+                            bool dim_3d_enable = node.involved_dim_3;
+
+                            if (dim_1d_enable)
+                            {
+                                int total_nodes_in_ring = dims[0];
+                                int node_id = node.id;
+                                int offset = 1;
+                                int index = (node_id % (offset * total_nodes_in_ring)) / offset;
+
+                                // current logic topo
+                                RingTopology ring_topo(Dimension::Local, node_id, total_nodes_in_ring, index, offset);
+
+                                int flow_count = get_comm_count_per_phase(node.comm_type, comm_implementation_type,total_nodes_in_ring);
+                                printf("get_comm_count_per_phase: %d\n", flow_count);
+                                int msg_size = 0;
+                                int final_data_size = 0;
+                                get_comm_size_per_flow(node.comm_type, comm_implementation_type, data_size,total_nodes_in_ring, msg_size, final_data_size);
+                            }
+
+                        break;
                         }
                     }
                     }
@@ -3180,5 +3288,4 @@ namespace madEscape
     // application's world data type (Sim) and config and initialization types.
     // On the CPU it is a no-op.
     MADRONA_BUILD_MWGPU_ENTRY(Engine, Sim, Sim::Config, Sim::WorldInit);
-
 }
