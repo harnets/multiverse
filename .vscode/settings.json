@@ -16,6 +16,18 @@
         "utility": "cpp",
         "__locale": "cpp",
         "locale": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "algorithm": "cpp",
+        "optional": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "deque": "cpp",
+        "regex": "cpp",
+        "vector": "cpp",
+        "system_error": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp"
     }
 }

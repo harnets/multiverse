@@ -943,7 +943,7 @@ struct Topo {
 #define MAX_FLOW_NUM_PER_COMM_NODE 999
 
 // 每个节点的流序号区间
-#define FLOW_ID_MAX_LENGTH 5000
+#define FLOW_ID_MAX_LENGTH 10000
 
 // #define MAX_FLOW_NUM_ALL_COMM_NODE 9999
 
@@ -1024,7 +1024,7 @@ struct Topo {
 
     struct SysFlow
     {
-        int id;
+        uint32_t  id;
         uint64_t comm_size;
         uint64_t comm_src;
         uint64_t comm_dst;
@@ -1052,15 +1052,42 @@ struct Topo {
 
     struct TaskFlows
     {
+        bool is_exec;
         SysFlow flows[MAX_FLOW_NUM_PER_COMM_NODE];
 
         TaskFlows()
         {
+            is_exec = false;
             for (int i = 0; i < MAX_FLOW_NUM_PER_COMM_NODE; ++i)
             {
                 flows[i] = SysFlow(); // 初始化每个任务
             }
         }
+
+        // 获取exec_index最小的所有流，返回个数，flows_out写入结果
+        int getFlowsWithMinExecIndex(SysFlow flows_out[]) {
+            int min_exec_index = -1;
+            int count = 0;
+            // 第一次遍历，找最小exec_index
+            for (int i = 0; i < MAX_FLOW_NUM_PER_COMM_NODE; ++i) {
+                const SysFlow& flow = flows[i];
+                if (flow.id == -1) continue; // 跳过未初始化
+                if (min_exec_index == -1 || flow.exec_index < min_exec_index) {
+                    min_exec_index = flow.exec_index;
+                }
+            }
+            // 第二次遍历，收集所有exec_index等于最小值的流
+            for (int i = 0; i < MAX_FLOW_NUM_PER_COMM_NODE; ++i) {
+                const SysFlow& flow = flows[i];
+                if (flow.id == -1) continue;
+                if (flow.exec_index == min_exec_index) {
+                    flows_out[count++] = flow;
+                }
+            }
+            return count;
+        }
+
+        
         void updateFlows(const SysFlow flows_finish[], int flows_finish_size)
         {
             for (int i = 0; i < flows_finish_size; ++i)
