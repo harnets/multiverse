@@ -27,6 +27,9 @@ using namespace madrona::phys;
 // 0 SYS 1 NET 2 MIX
 #define DEV_MODE 0
 
+// 只处理集合通信COMM_COLL_NODE的chakra节点
+#define ONLY_PROCESS_COLL_CHAKRA_NODE true
+
 namespace RenderingSystem = madrona::render::RenderingSystem;
 
 namespace madEscape
@@ -2554,6 +2557,39 @@ namespace madEscape
                                 ProcessingCompTask &processingCompTask,
                                 ProcessingCommTasks &processingCommTasks)
     {
+        if (SYS_LOG && id.value == 0)
+        {
+            printf("### sys1 ### : exec processNpuNodes.\n");
+        }
+
+        if (ONLY_PROCESS_COLL_CHAKRA_NODE)
+        {
+            while (true)
+            {
+                ChakraNode current_exec_nodes[CURRENT_EXEC_NODES_MAX];
+                int count = filterNoDependencyNodes(chakraNodes, current_exec_nodes);
+                bool shouldBreak = false; 
+
+                for (size_t i = 0; i < count; i++)
+                {
+                    ChakraNode node = current_exec_nodes[i];
+                    if (node.type == NodeType::COMM_COLL_NODE)
+                    {
+                        shouldBreak = true;
+                        break;
+                    }
+                    else
+                    {
+                        removeNode(chakraNodes, node.id);
+                        printf("remove node %d", node.id);
+                    }
+                }
+
+                if (shouldBreak)
+                    break; // for while 
+            }
+        }
+
         if (SYS_LOG && id.value == 0)
         {
             printf("### sys1 ### : exec processNpuNodes.\n");
