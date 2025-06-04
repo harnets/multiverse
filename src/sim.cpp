@@ -2622,7 +2622,6 @@ namespace madEscape
                     }
                     processingCommTask.state = TaskState::START;
                     processingCommTask.node_id = node.id;
-                    processingCommTask.flow_count = 1;
                     processingCommTasks.addTask(processingCommTask);
 
                     // create comm entity
@@ -2630,7 +2629,7 @@ namespace madEscape
                     ctx.get<TaskFlows>(process_e) = TaskFlows();
                     ctx.get<NpuID>(process_e).value = id.value;
                     ctx.get<NodeID>(process_e).value = node.id;
-                    uint32_t flow_id = processingCommTasks.getTotalFlowCount();
+                    uint32_t flow_id = processingCommTasks.getFlowId();
                     ctx.get<TaskFlows>(process_e).flows[0] = SysFlow();
                     ctx.get<TaskFlows>(process_e).flows[0].id = flow_id;
                     ctx.get<TaskFlows>(process_e).flows[0].comm_size = node.comm_size;
@@ -2667,7 +2666,6 @@ namespace madEscape
                     }
                     processingCommTask.state = TaskState::START;
                     processingCommTask.node_id = node.id;
-                    processingCommTask.flow_count = 1;
                     processingCommTasks.addTask(processingCommTask);
 
                     // create comm entity
@@ -2675,7 +2673,7 @@ namespace madEscape
                     ctx.get<TaskFlows>(process_e) = TaskFlows();
                     ctx.get<NpuID>(process_e).value = id.value;
                     ctx.get<NodeID>(process_e).value = node.id;
-                    uint32_t flow_id = processingCommTasks.getTotalFlowCount();
+                    uint32_t flow_id = processingCommTasks.getFlowId();
                     ctx.get<TaskFlows>(process_e).flows[0] = SysFlow();
                     ctx.get<TaskFlows>(process_e).flows[0].id = flow_id;
                     ctx.get<TaskFlows>(process_e).flows[0].comm_size = node.comm_size;
@@ -2775,7 +2773,6 @@ namespace madEscape
                                 ProcessingCommTask processingCommTask = ProcessingCommTask();
                                 processingCommTask.state = TaskState::START;
                                 processingCommTask.node_id = node.id;
-                                processingCommTask.flow_count = 1;
                                 processingCommTasks.addTask(processingCommTask);
 
                                 // create comm entity
@@ -2789,25 +2786,25 @@ namespace madEscape
                                 int flow_exec_index = 0;
                                 int flow_current_count = 0;
 
-                                int temp = 0;
+                                int dim_current = 0;
                                 int offset = 1;
-                                while (temp < 3)
+                                while (dim_current < 3)
                                 {
                                     bool excute = false;
                                     int total_nodes_in_ring = dims[0];
                                     Dimension dimension = Dimension::Local;
 
-                                    if (temp == 0 && dim_1d_enable)
+                                    if (dim_current == 0 && dim_1d_enable)
                                     {
                                         excute = true;
                                     }
-                                    if (temp == 1 && dim_2d_enable)
+                                    if (dim_current == 1 && dim_2d_enable)
                                     {
                                         total_nodes_in_ring = dims[1];
                                         dimension = Dimension::Horizontal;
                                         excute = true;
                                     }
-                                    if (temp == 2 && dim_3d_enable)
+                                    if (dim_current == 2 && dim_3d_enable)
                                     {
                                         total_nodes_in_ring = dims[2];
                                         dimension = Dimension::Vertical;
@@ -2833,7 +2830,7 @@ namespace madEscape
 
                                             for (size_t i = 0; i < flow_count; i++)
                                             {
-                                                uint32_t flow_id = processingCommTasks.getTotalFlowCount();
+                                                uint32_t flow_id = processingCommTasks.getFlowId();
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count] = SysFlow();
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].id = flow_id;
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_size = msg_size;
@@ -2847,8 +2844,8 @@ namespace madEscape
                                             }
                                         }
                                     }
-                                    offset *= dims[temp];
-                                    temp++;
+                                    offset *= dims[dim_current];
+                                    dim_current++;
                                 }
 
                                 break;
@@ -2870,6 +2867,24 @@ namespace madEscape
         }
     }
 
+    inline bool setNextExecFlows(Engine &ctx, TaskFlows &taskFlows)
+    {
+        SysFlow flows_exec[MAX_FLOW_NUM_PER_COMM_NODE];
+        uint32_t flow_exec_count = taskFlows.getNextExecFlows(flows_exec);
+        if (flow_exec_count > 0)
+        {
+            for (size_t i = 0; i < flow_exec_count; i++)
+            {
+                setFlow(ctx, flows_exec[i].comm_src, flows_exec[i].comm_dst, flows_exec[i].comm_size, flows_exec[i].id);
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     inline void processCommCheckFlow(Engine &ctx, NpuID &npu_id, NodeID &node_id, TaskFlows &taskFlows)
     {
         if (SYS_LOG && npu_id.value == 0)
@@ -2879,48 +2894,67 @@ namespace madEscape
 
         if (ENABLE_TEST)
         {
-            for (int i = 0; i < 20; ++i)
+            taskFlows.setCurrentIndexFlowsFinish();
+            // for (int i = 0; i < 20; ++i)
+            // {
+            //     if (taskFlows.flows[i].state == TaskState::START)
+            //     {
+            //         taskFlows.flows[i].state = TaskState::FINISH;
+            //         printf("test : flow size, flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
+            //                taskFlows.flows[i].id, taskFlows.flows[i].comm_size, taskFlows.flows[i].comm_src, taskFlows.flows[i].comm_dst);
+            //     }
+            // }
+            // set next group flows
+            if (!taskFlows.hasFlowWithCurrentIndex())
             {
-                if (taskFlows.flows[i].state == TaskState::START)
+                if (!setNextExecFlows(ctx, taskFlows))
                 {
-                    taskFlows.flows[i].state = TaskState::FINISH;
-                    printf("test : flow size, flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
-                           taskFlows.flows[i].id, taskFlows.flows[i].comm_size, taskFlows.flows[i].comm_src, taskFlows.flows[i].comm_dst);
-                }
-            }
-        }
+                    if (taskFlows.areAllTasksDone())
+                    {
+                        printf("node id %d -> taskFlows.areAllTasksDone\n", node_id);
 
-        if (!taskFlows.is_exec)
-        {
-            taskFlows.is_exec = true;
-            SysFlow flows_exec[MAX_FLOW_NUM_PER_COMM_NODE];
-            uint32_t flow_exec_count = taskFlows.getFlowsWithMinExecIndex(flows_exec);
-            if (flow_exec_count > 0)
-            {
-                for (size_t i = 0; i < flow_exec_count; i++)
-                {
-                    setFlow(ctx, flows_exec[i].comm_src, flows_exec[i].comm_dst, flows_exec[i].comm_size, flows_exec[i].id);
+                        ctx.get<ProcessingCommTasks>(ctx.data().chakra_nodes_entities[npu_id.value]).setFinish(node_id.value, getCurrentTime(ctx));
+
+                        ctx.destroyEntity(ctx.data().node_flows_exec_entity[npu_id.value][node_id.value]);
+                    }
                 }
             }
         }
         else
         {
 
-            SysFlow flows_finish[MAX_FLOW_NUM_PER_COMM_NODE];
-            uint32_t flow_finish_count = checkFlowFinish(ctx, npu_id.value, flows_finish);
-
-            if (flow_finish_count > 0)
+            if (!taskFlows.is_exec)
             {
-                taskFlows.updateFlows(flows_finish, flow_finish_count);
+                taskFlows.is_exec = true;
+                // first
+                setNextExecFlows(ctx, taskFlows);
             }
-
-            if (taskFlows.areAllTasksDone())
+            else
             {
-                printf("node id %d -> taskFlows.areAllTasksDone\n", node_id);
 
-                ctx.get<ProcessingCommTasks>(ctx.data().chakra_nodes_entities[npu_id.value]).setFinish(node_id.value, getCurrentTime(ctx));
+                SysFlow flows_finish[MAX_FLOW_NUM_PER_COMM_NODE];
+                uint32_t flow_finish_count = checkFlowFinish(ctx, npu_id.value, flows_finish);
 
-                ctx.destroyEntity(ctx.data().node_flows_exec_entity[npu_id.value][node_id.value]);
+                if (flow_finish_count > 0)
+                {
+                    taskFlows.updateFlows(flows_finish, flow_finish_count);
+
+                    // set next group flows
+                    if (!taskFlows.hasFlowWithCurrentIndex())
+                    {
+                        if (!setNextExecFlows(ctx, taskFlows))
+                        {
+                            if (taskFlows.areAllTasksDone())
+                            {
+                                printf("node id %d -> taskFlows.areAllTasksDone\n", node_id);
+
+                                ctx.get<ProcessingCommTasks>(ctx.data().chakra_nodes_entities[npu_id.value]).setFinish(node_id.value, getCurrentTime(ctx));
+
+                                ctx.destroyEntity(ctx.data().node_flows_exec_entity[npu_id.value][node_id.value]);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
