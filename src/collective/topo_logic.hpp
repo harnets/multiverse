@@ -22,8 +22,8 @@ namespace madEscape
     enum class Dimension
     {
         Local,
-        Vertical,
         Horizontal,
+        Vertical,
         NA
     };
 

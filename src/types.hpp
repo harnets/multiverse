@@ -1002,6 +1002,8 @@ namespace madEscape
         BARRIER = 9
     };
 
+   
+
     enum CommImplementationType : int32_t
     {
         Ring = 0
@@ -1053,7 +1055,7 @@ namespace madEscape
         uint32_t durationMicros;
 
         // 流执行顺序id
-        uint32_t exec_index;
+        int exec_index;
         // 是否执行完
         TaskState state;
         // 收端完成 or 发端完成
@@ -1094,10 +1096,10 @@ namespace madEscape
             {
                 if (flows[i].id == -1 || flows[i].state == TaskState::FINISH)
                     continue; // 跳过未初始化
-                if (flows[i].exec_index == current_index)
+                if ((int)flows[i].exec_index == current_index)
                 {
                     flows[i].state = TaskState::FINISH;
-                     printf("test : flow size, flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
+                     printf("test for finish: flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
                            flows[i].id, flows[i].comm_size, flows[i].comm_src, flows[i].comm_dst);
                 }
             }
@@ -1105,17 +1107,19 @@ namespace madEscape
 
         int getNextExecFlows(SysFlow flows_out[])
         {
+            printf("current_index:%d\n",current_index);
             int min_exec_index = -1;
             int count = 0;
 
             // 第一次遍历，找比 current_index 大的最小 exec_index
-            for (int i = 0; i < MAX_FLOW_NUM_PER_COMM_NODE; ++i)
+            // for (int i = 0; i < MAX_FLOW_NUM_PER_COMM_NODE; ++i)
+            for (int i = 0; i < 20; ++i)
             {
                 const SysFlow &flow = flows[i];
+                
                 if (flow.id == -1 || flow.state == TaskState::FINISH)
                     continue;
-
-                if (flow.exec_index > current_index)
+                if ((int)flow.exec_index > current_index)
                 {
                     if (min_exec_index == -1 || flow.exec_index < min_exec_index)
                     {
@@ -1404,6 +1408,7 @@ namespace madEscape
             {
                 if (tasks[i].state == TaskState::FINISH && tasks[i].time_finish_ns <= t)
                 {
+                    printf(" tasks.node_id %d FINISH\n",tasks[i].node_id);
                     result[count++] = tasks[i];       // 将任务放入结果数组
                     tasks[i].state = TaskState::INIT; // 标记任务为无效（出队）
                     // tasks[i].node_id = -1;         // 重置 node_id

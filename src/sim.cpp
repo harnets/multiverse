@@ -834,7 +834,7 @@ namespace madEscape
         _enqueue_flow(ctx.get<NewFlowQueue>(net_npu), flow_event);
         ctx.data().flow_lock.unlock();
 
-        printf("set flow id %d: %d->%d %d, \n", flow_id, comm_src, comm_dst, flow_size);
+        printf("set net flow id %d: %d->%d %d, \n", flow_id, comm_src, comm_dst, flow_size);
     }
 
     inline void comm_set_flow(Engine &ctx, NET_NPU_ID _net_npu_id,
@@ -2492,8 +2492,8 @@ namespace madEscape
     }
 
     // 获取每个阶段通信（ring）次数
-    inline int get_comm_count_per_phase(CollectiveCommType comm_type,
-                                        CommImplementationType comm_implementation_type, int nodes_in_ring)
+    inline int get_ring_comm_count_per_phase(CollectiveCommType comm_type,
+                                             CommImplementationType comm_implementation_type, int nodes_in_ring)
     {
         int stream_count = 0;
         switch (comm_type)
@@ -2511,8 +2511,8 @@ namespace madEscape
     }
 
     // 获取每个阶段的flow大小和每个节点最终的数据量
-    inline void get_comm_size_per_flow(CollectiveCommType comm_type,
-                                       CommImplementationType comm_implementation_type, int data_size, int nodes_in_ring, int &msg_size, int &final_data_size)
+    inline void get_ring_comm_size_per_flow(CollectiveCommType comm_type,
+                                            CommImplementationType comm_implementation_type, int data_size, int nodes_in_ring, int &msg_size, int &final_data_size)
     {
         msg_size = data_size;
         switch (comm_type)
@@ -2550,6 +2550,69 @@ namespace madEscape
         return Direction::Clockwise;
     }
 
+    inline bool setNextExecFlows(Engine &ctx, TaskFlows &taskFlows)
+    {
+        SysFlow flows_exec[MAX_FLOW_NUM_PER_COMM_NODE];
+        uint32_t flow_exec_count = taskFlows.getNextExecFlows(flows_exec);
+        printf("setNextExecFlows.flow_exec_count:%d\n", flow_exec_count);
+        if (flow_exec_count > 0)
+        {
+            for (size_t i = 0; i < flow_exec_count; i++)
+            {
+                setFlow(ctx, flows_exec[i].comm_src, flows_exec[i].comm_dst, flows_exec[i].comm_size, flows_exec[i].id);
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    const char *CollectiveCommTypeToString(CollectiveCommType type)
+    {
+        switch (type)
+        {
+        case ALL_REDUCE:
+            return "ALL_REDUCE";
+        case REDUCE:
+            return "REDUCE";
+        case ALL_GATHER:
+            return "ALL_GATHER";
+        case GATHER:
+            return "GATHER";
+        case SCATTER:
+            return "SCATTER";
+        case BROADCAST:
+            return "BROADCAST";
+        case ALL_TO_ALL:
+            return "ALL_TO_ALL";
+        case REDUCE_SCATTER:
+            return "REDUCE_SCATTER";
+        case REDUCE_SCATTER_BLOCK:
+            return "REDUCE_SCATTER_BLOCK";
+        case BARRIER:
+            return "BARRIER";
+        default:
+            return "UNKNOWN";
+        }
+    }
+
+    const char *DimensionToString(Dimension type)
+    {
+        switch (type)
+        {
+        case Dimension::Local:
+            return "Local";
+        case Dimension::Horizontal:
+            return "Horizontal";
+        case Dimension::Vertical:
+            return "Vertical";
+        default:
+            return "UNKNOWN";
+        }
+    }
+
     inline void processNpuNodes(Engine &ctx,
                                 NpuID &id,
                                 ChakraNodes &chakraNodes,
@@ -2568,7 +2631,7 @@ namespace madEscape
             {
                 ChakraNode current_exec_nodes[CURRENT_EXEC_NODES_MAX];
                 int count = filterNoDependencyNodes(chakraNodes, current_exec_nodes);
-                bool shouldBreak = false; 
+                bool shouldBreak = false;
 
                 for (size_t i = 0; i < count; i++)
                 {
@@ -2586,13 +2649,8 @@ namespace madEscape
                 }
 
                 if (shouldBreak)
-                    break; // for while 
+                    break; // for while
             }
-        }
-
-        if (SYS_LOG && id.value == 0)
-        {
-            printf("### sys1 ### : exec processNpuNodes.\n");
         }
 
         // append nodes
@@ -2690,6 +2748,14 @@ namespace madEscape
                     }
 
                     setFlow(ctx, src, dst, node.comm_size, flow_id);
+                    printf("set entity flow_id: %u, comm_size: %d, comm_src: %d, comm_dst: %d, state: %d, is_send: %d, exec_index: %d\n",
+                                                       flow_id,
+                                                       node.comm_size,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].comm_src,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].comm_dst,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].state,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].is_send,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].exec_index);
 
                     break;
                 }
@@ -2735,6 +2801,14 @@ namespace madEscape
                     }
 
                     setFlow(ctx, src, dst, node.comm_size, flow_id);
+                    printf("set entity flow_id: %u, comm_size: %d, comm_src: %d, comm_dst: %d, state: %d, is_send: %d, exec_index: %d\n",
+                                                       flow_id,
+                                                       node.comm_size,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].comm_src,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].comm_dst,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].state,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].is_send,
+                                                       ctx.get<TaskFlows>(process_e).flows[0].exec_index);
 
                     // for (int i = 0; i < 20; ++i)
                     // {
@@ -2756,6 +2830,15 @@ namespace madEscape
                         printf("processingCommTask: coll .\n");
                     }
                     // slice info, for temp
+                    int dims[] = {4, 2, 2};
+                    // int dims[] = {4, 2, 2};
+                    int dims_len = sizeof(dims) / sizeof(dims[0]);
+                    printf("dims: ");
+                    for (int i = 0; i < dims_len; ++i)
+                    {
+                        printf("%d ", dims[i]);
+                    }
+                    printf("\n");
                     int npu_num = 16;
                     int chunks_num = 2;
                     int chunk_size = node.comm_size / chunks_num;
@@ -2765,18 +2848,36 @@ namespace madEscape
                     {
                         chunks_num++;
                     }
+                    printf("chunks_num:%d\n", chunks_num);
+                    printf("chunk_size:%d\n", chunk_size);
+                    printf("remain_size:%d\n", remain_size);
+                    // printf("comm type: %d\n", node.comm_type);
+                    printf("comm type: %s\n", CollectiveCommTypeToString(node.comm_type));
+
+                    // create comm entity
+                    Entity process_e = ctx.makeEntity<ProcessComm_E>();
+                    ctx.get<TaskFlows>(process_e) = TaskFlows();
+                    ctx.get<NpuID>(process_e).value = id.value;
+                    ctx.get<NodeID>(process_e).value = node.id;
+
+                    int flow_exec_index = 0;
+                    int flow_current_count = 0;
+
+                    printf("-----------create comm entity: process_e.----------\n");
 
                     for (size_t i = 0; i < chunks_num; i++)
                     {
+                        printf("enter chunk_num %d\n", i);
                         int data_size_current = chunk_size;
-                        if (i == chunks_num - 1)
+                        if (remain_size > 0 && i == chunks_num - 1)
                         {
                             data_size_current = remain_size;
                         }
+                        printf("data_size_current:%d\n", data_size_current);
 
                         switch (node.comm_type)
                         {
-                            printf("comm type: %d\n", node.comm_type);
+
                         case CollectiveCommType::ALL_REDUCE:
                             // 拆解成细分阶段->Reduce_Scatter+All_Gather
                             // break;
@@ -2798,12 +2899,15 @@ namespace madEscape
                             {
                             case CommImplementationType::Ring:
                                 // topo info for temp 3d
-                                int dims[] = {4, 4, 2};
+
                                 int dims_len = sizeof(dims) / sizeof(dims[0]);
                                 // demotion excute info for temp
                                 bool dim_1d_enable = node.involved_dim_1;
                                 bool dim_2d_enable = node.involved_dim_2;
                                 bool dim_3d_enable = node.involved_dim_3;
+                                printf("dim_1d_enable: %d\n", dim_1d_enable);
+                                printf("dim_2d_enable: %d\n", dim_2d_enable);
+                                printf("dim_3d_enable: %d\n", dim_3d_enable);
 
                                 // create comm task
                                 ProcessingCommTask processingCommTask = ProcessingCommTask();
@@ -2811,21 +2915,13 @@ namespace madEscape
                                 processingCommTask.node_id = node.id;
                                 processingCommTasks.addTask(processingCommTask);
 
-                                // create comm entity
-                                Entity process_e = ctx.makeEntity<ProcessComm_E>();
-                                ctx.get<TaskFlows>(process_e) = TaskFlows();
-                                ctx.get<NpuID>(process_e).value = id.value;
-                                ctx.get<NodeID>(process_e).value = node.id;
-
                                 ctx.data().node_flows_exec_entity[id.value][node.id] = process_e;
-
-                                int flow_exec_index = 0;
-                                int flow_current_count = 0;
 
                                 int dim_current = 0;
                                 int offset = 1;
                                 while (dim_current < 3)
                                 {
+                                    printf("enter dim %d\n", dim_current);
                                     bool excute = false;
                                     int total_nodes_in_ring = dims[0];
                                     Dimension dimension = Dimension::Local;
@@ -2856,25 +2952,47 @@ namespace madEscape
                                             int index = (node_id % (offset * total_nodes_in_ring)) / offset;
                                             // current logic topo
                                             RingTopology ring_topo(dimension, node_id, total_nodes_in_ring, index, offset);
+                                            printf("RingTopology 参数信息：dimension=%s, node_id=%d, total_nodes_in_ring=%d, index=%d, offset=%d\n",
+                                                   DimensionToString(dimension), node_id, total_nodes_in_ring, index, offset);
+                                            printf("index_to_id内容如下：\n");
+                                            for (auto it = ring_topo.index_to_id.begin(); it != ring_topo.index_to_id.end(); ++it)
+                                            {
+                                                printf("index: %d -> id: %d\n", (*it).key, (*it).value);
+                                            }
+
                                             Direction dir = get_comm_Ring_Direction();
                                             printf("Direction: %d\n", dir);
-                                            int flow_count = get_comm_count_per_phase(node.comm_type, comm_implementation_type, total_nodes_in_ring);
-                                            printf("get_comm_count_per_phase: %d\n", flow_count);
+                                            int flow_count = get_ring_comm_count_per_phase(node.comm_type, comm_implementation_type, total_nodes_in_ring);
+                                            printf("flow_count: %d\n", flow_count);
                                             int msg_size = 0;
                                             int final_data_size = 0;
-                                            get_comm_size_per_flow(node.comm_type, comm_implementation_type, data_size_current, total_nodes_in_ring, msg_size, final_data_size);
-
+                                            get_ring_comm_size_per_flow(node.comm_type, comm_implementation_type, data_size_current, total_nodes_in_ring, msg_size, final_data_size);
+                                            printf("msg_size: %d\n", msg_size);
+                                            printf("final_data_size: %d\n", final_data_size);
                                             for (size_t i = 0; i < flow_count; i++)
                                             {
                                                 uint32_t flow_id = processingCommTasks.getFlowId();
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count] = SysFlow();
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].id = flow_id;
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_size = msg_size;
-                                                ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_src = ring_topo.get_sender(node_id, dir);
+                                                // todo：only send flow，recv flow will be checked by sender node.
+                                                // ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_src = ring_topo.get_sender(node_id, dir);
+                                                ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_src = node_id;
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_dst = ring_topo.get_receiver(node_id, dir);
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].state = TaskState::START;
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].is_send = true;
                                                 ctx.get<TaskFlows>(process_e).flows[flow_current_count].exec_index = flow_exec_index;
+
+                                                // 打印flow相关信息
+                                                printf("set entity flow_id: %u, comm_size: %d, comm_src: %d, comm_dst: %d, state: %d, is_send: %d, exec_index: %d\n",
+                                                       flow_id,
+                                                       msg_size,
+                                                       ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_src,
+                                                       ctx.get<TaskFlows>(process_e).flows[flow_current_count].comm_dst,
+                                                       ctx.get<TaskFlows>(process_e).flows[flow_current_count].state,
+                                                       ctx.get<TaskFlows>(process_e).flows[flow_current_count].is_send,
+                                                       ctx.get<TaskFlows>(process_e).flows[flow_current_count].exec_index);
+
                                                 flow_current_count++;
                                                 flow_exec_index++;
                                             }
@@ -2903,55 +3021,51 @@ namespace madEscape
         }
     }
 
-    inline bool setNextExecFlows(Engine &ctx, TaskFlows &taskFlows)
-    {
-        SysFlow flows_exec[MAX_FLOW_NUM_PER_COMM_NODE];
-        uint32_t flow_exec_count = taskFlows.getNextExecFlows(flows_exec);
-        if (flow_exec_count > 0)
-        {
-            for (size_t i = 0; i < flow_exec_count; i++)
-            {
-                setFlow(ctx, flows_exec[i].comm_src, flows_exec[i].comm_dst, flows_exec[i].comm_size, flows_exec[i].id);
-            }
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     inline void processCommCheckFlow(Engine &ctx, NpuID &npu_id, NodeID &node_id, TaskFlows &taskFlows)
     {
         if (SYS_LOG && npu_id.value == 0)
         {
             printf("### sys2 ### : exec processCommCheckFlow.\n");
         }
-
+        // printf("1\n");
         if (ENABLE_TEST)
         {
-            taskFlows.setCurrentIndexFlowsFinish();
-            // for (int i = 0; i < 20; ++i)
-            // {
-            //     if (taskFlows.flows[i].state == TaskState::START)
-            //     {
-            //         taskFlows.flows[i].state = TaskState::FINISH;
-            //         printf("test : flow size, flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
-            //                taskFlows.flows[i].id, taskFlows.flows[i].comm_size, taskFlows.flows[i].comm_src, taskFlows.flows[i].comm_dst);
-            //     }
-            // }
-            // set next group flows
-            if (!taskFlows.hasFlowWithCurrentIndex())
+            // printf("2\n");
+            if (!taskFlows.is_exec)
             {
-                if (!setNextExecFlows(ctx, taskFlows))
+                // printf("3\n");
+                taskFlows.is_exec = true;
+                // first
+                setNextExecFlows(ctx, taskFlows);
+                // printf("4\n");
+            }
+            else
+            {
+                // printf("5\n");
+                taskFlows.setCurrentIndexFlowsFinish();
+
+                // for (int i = 0; i < 20; ++i)
+                // {
+                //     if (taskFlows.flows[i].state == TaskState::START)
+                //     {
+                //         taskFlows.flows[i].state = TaskState::FINISH;
+                //         printf("test : flow size, flow id: %d, comm size: %d, comm src: %d, comm dst: %d\n",
+                //                taskFlows.flows[i].id, taskFlows.flows[i].comm_size, taskFlows.flows[i].comm_src, taskFlows.flows[i].comm_dst);
+                //     }
+                // }
+                // set next group flows
+                if (!taskFlows.hasFlowWithCurrentIndex())
                 {
-                    if (taskFlows.areAllTasksDone())
+                    if (!setNextExecFlows(ctx, taskFlows))
                     {
-                        printf("node id %d -> taskFlows.areAllTasksDone\n", node_id);
+                        if (taskFlows.areAllTasksDone())
+                        {
+                            printf("node id %d -> taskFlows.areAllTasksDone\n", node_id);
 
-                        ctx.get<ProcessingCommTasks>(ctx.data().chakra_nodes_entities[npu_id.value]).setFinish(node_id.value, getCurrentTime(ctx));
+                            ctx.get<ProcessingCommTasks>(ctx.data().chakra_nodes_entities[npu_id.value]).setFinish(node_id.value, getCurrentTime(ctx));
 
-                        ctx.destroyEntity(ctx.data().node_flows_exec_entity[npu_id.value][node_id.value]);
+                            ctx.destroyEntity(ctx.data().node_flows_exec_entity[npu_id.value][node_id.value]);
+                        }
                     }
                 }
             }
@@ -3089,10 +3203,10 @@ namespace madEscape
                     //     printf("processingCompTask over.\n");
                     // }
                     // release node.
-                    removeNode(chakraNodes, processingCommTasks.tasks[i].node_id);
+                    removeNode(chakraNodes, result[i].node_id);
                     if (SYS_LOG && id.value == 0)
                     {
-                        printf("release comm node : %d\n", processingCommTasks.tasks[i].node_id);
+                        printf("release comm node : %d\n", result[i].node_id);
                     }
                 }
             }
