@@ -17,7 +17,7 @@
 # echo "=========================="
 
 num_env=1
-num_updates=5
+num_updates=100
 gpu_id=1
 fattree_K=4
 cc_method=1 #0 = dcqcn, 1 = hpcc(TBD)

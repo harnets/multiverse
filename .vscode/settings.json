@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "inplace_vector": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp"
+    }
+}
