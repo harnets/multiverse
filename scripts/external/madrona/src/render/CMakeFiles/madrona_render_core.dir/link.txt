@@ -1,0 +1,2 @@
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ar qc libmadrona_render_core.a CMakeFiles/madrona_render_core.dir/render_mgr.cpp.o CMakeFiles/madrona_render_core.dir/render_ctx.cpp.o CMakeFiles/madrona_render_core.dir/batch_renderer.cpp.o CMakeFiles/madrona_render_core.dir/image_util.cpp.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ranlib libmadrona_render_core.a

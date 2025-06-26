@@ -1,0 +1,2 @@
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ar qc libmadrona_window.a CMakeFiles/madrona_window.dir/window.cpp.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ranlib libmadrona_window.a

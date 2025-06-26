@@ -1,0 +1,2 @@
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ar qc libmadrona_importer.a CMakeFiles/madrona_importer.dir/importer.cpp.o CMakeFiles/madrona_importer.dir/obj.cpp.o CMakeFiles/madrona_importer.dir/stb_read.cpp.o CMakeFiles/madrona_importer.dir/img.cpp.o CMakeFiles/madrona_importer.dir/gltf.cpp.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ranlib libmadrona_importer.a

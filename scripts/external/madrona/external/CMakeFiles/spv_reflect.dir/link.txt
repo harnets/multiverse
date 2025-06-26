@@ -1,0 +1,2 @@
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ar qc libspv_reflect.a "CMakeFiles/spv_reflect.dir/SPIRV-Reflect/spirv_reflect.cpp.o"
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ranlib libspv_reflect.a

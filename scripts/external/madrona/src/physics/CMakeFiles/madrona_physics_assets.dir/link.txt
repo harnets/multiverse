@@ -1,0 +1,2 @@
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ar qc libmadrona_physics_assets.a CMakeFiles/madrona_physics_assets.dir/physics_assets.cpp.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ranlib libmadrona_physics_assets.a

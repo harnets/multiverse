@@ -1,0 +1,545 @@
+The system is: Linux - 6.8.0-58-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is Clang, found in "/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/3.24.0/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is Clang, found in "/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/3.24.0/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_73004/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_73004.dir/build.make CMakeFiles/cmTC_73004.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -v -MD -MT CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -c /usr/local/share/cmake-3.24/Modules/CMakeCCompilerABI.c
+clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found CUDA installation: /usr/local/cuda-12.5, version 
+ (in-process)
+ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang-18" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -v -fcoverage-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -resource-dir /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18 -dependency-file CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -x c /usr/local/share/cmake-3.24/Modules/CMakeCCompilerABI.c
+clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-pc-linux-gnu
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+Linking C executable cmTC_73004
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73004.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -v CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -o cmTC_73004 
+clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found CUDA installation: /usr/local/cuda-12.5, version 
+ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_73004 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed -lc /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o /lib/x86_64-linux-gnu/crtn.o
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_73004/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_73004.dir/build.make CMakeFiles/cmTC_73004.dir/build]
+  ignore line: [gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -v -MD -MT CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -c /usr/local/share/cmake-3.24/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found CUDA installation: /usr/local/cuda-12.5  version ]
+  ignore line: [ (in-process)]
+  ignore line: [ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang-18" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -v -fcoverage-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -resource-dir /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18 -dependency-file CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -x c /usr/local/share/cmake-3.24/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-pc-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_73004]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73004.dir/link.txt --verbose=1]
+  ignore line: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -v CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o -o cmTC_73004 ]
+  ignore line: [clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found CUDA installation: /usr/local/cuda-12.5  version ]
+  link line: [ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_73004 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed -lc /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/ld.lld] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_73004] ==> ignore
+    arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o] ==> obj [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o]
+    arg [-L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu] ==> dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu]
+    arg [-L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu] ==> dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_73004.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a] ==> lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+    arg [--as-needed] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a] ==> lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+    arg [--as-needed] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-as-needed] ==> ignore
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o] ==> obj [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  remove lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+  remove lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+  collapse library dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/x86_64-pc-linux-gnu]
+  collapse library dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12] ==> [/usr/lib/gcc/x86_64-linux-gnu/12]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [unwind;c;unwind]
+  implicit objs: [/lib/x86_64-linux-gnu/Scrt1.o;/lib/x86_64-linux-gnu/crti.o;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/x86_64-pc-linux-gnu;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu;/usr/lib/gcc/x86_64-linux-gnu/12;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/lib;/usr/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_decfd/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_decfd.dir/build.make CMakeFiles/cmTC_decfd.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang++   -v -MD -MT CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp
+clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found CUDA installation: /usr/local/cuda-12.5, version 
+ (in-process)
+ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang-18" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -v -fcoverage-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -resource-dir /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18 -dependency-file CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/x86_64-pc-linux-gnu/c++/v1 -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/c++/v1 -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-pc-linux-gnu
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/x86_64-pc-linux-gnu/c++/v1
+ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/c++/v1
+ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+Linking CXX executable cmTC_decfd
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_decfd.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang++  -v CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_decfd 
+clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found CUDA installation: /usr/local/cuda-12.5, version 
+ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_decfd /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lm /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed -lc /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o /lib/x86_64-linux-gnu/crtn.o
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/x86_64-pc-linux-gnu/c++/v1]
+    add: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/c++/v1]
+    add: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/x86_64-pc-linux-gnu/c++/v1] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/include/x86_64-pc-linux-gnu/c++/v1]
+  collapse include dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/c++/v1] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/include/c++/v1]
+  collapse include dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/include/x86_64-pc-linux-gnu/c++/v1;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/include/c++/v1;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_decfd/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_decfd.dir/build.make CMakeFiles/cmTC_decfd.dir/build]
+  ignore line: [gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang++   -v -MD -MT CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found CUDA installation: /usr/local/cuda-12.5  version ]
+  ignore line: [ (in-process)]
+  ignore line: [ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang-18" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -v -fcoverage-compilation-dir=/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp -resource-dir /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18 -dependency-file CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/x86_64-pc-linux-gnu/c++/v1 -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/c++/v1 -internal-isystem /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-pc-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/x86_64-pc-linux-gnu/c++/v1]
+  ignore line: [ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../include/c++/v1]
+  ignore line: [ /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking CXX executable cmTC_decfd]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_decfd.dir/link.txt --verbose=1]
+  ignore line: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang++  -v CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_decfd ]
+  ignore line: [clang version 18.1.8 (git@github.com:shacklettbp/madrona-toolchain.git 58ee5a82d146a376c1b079157fc450656ac7ecb5)]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found CUDA installation: /usr/local/cuda-12.5  version ]
+  link line: [ "/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_decfd /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu -L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lm /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed -lc /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a --as-needed -lunwind --no-as-needed /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/ld.lld] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_decfd] ==> ignore
+    arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o] ==> obj [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o]
+    arg [-L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu] ==> dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu]
+    arg [-L/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu] ==> dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_decfd.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lm] ==> lib [m]
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a] ==> lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+    arg [--as-needed] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a] ==> lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+    arg [--as-needed] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-as-needed] ==> ignore
+    arg [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o] ==> obj [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  remove lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+  remove lib [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/libclang_rt.builtins.a]
+  collapse library dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/../lib/x86_64-pc-linux-gnu] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/x86_64-pc-linux-gnu]
+  collapse library dir [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu] ==> [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12] ==> [/usr/lib/gcc/x86_64-linux-gnu/12]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [c++;m;unwind;c;unwind]
+  implicit objs: [/lib/x86_64-linux-gnu/Scrt1.o;/lib/x86_64-linux-gnu/crti.o;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtbegin.o;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu/clang_rt.crtend.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/x86_64-pc-linux-gnu;/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/lib/x86_64-pc-linux-gnu;/usr/lib/gcc/x86_64-linux-gnu/12;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/lib;/usr/lib]
+  implicit fwks: []
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1b368/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1b368.dir/build.make CMakeFiles/cmTC_1b368.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1b368.dir/src.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang -DCMAKE_HAVE_LIBC_PTHREAD  -std=c11 -MD -MT CMakeFiles/cmTC_1b368.dir/src.c.o -MF CMakeFiles/cmTC_1b368.dir/src.c.o.d -o CMakeFiles/cmTC_1b368.dir/src.c.o -c /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1b368
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1b368.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang CMakeFiles/cmTC_1b368.dir/src.c.o -o cmTC_1b368 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the fork exist passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_ccf9f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_ccf9f.dir/build.make CMakeFiles/cmTC_ccf9f.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ccf9f.dir/CheckSymbolExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -std=c11 -MD -MT CMakeFiles/cmTC_ccf9f.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_ccf9f.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_ccf9f.dir/CheckSymbolExists.c.o -c /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_ccf9f
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ccf9f.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang CMakeFiles/cmTC_ccf9f.dir/CheckSymbolExists.c.o -o cmTC_ccf9f 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+File /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef fork
+  return ((int*)(&fork))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the wait exist passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_baa1b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_baa1b.dir/build.make CMakeFiles/cmTC_baa1b.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_baa1b.dir/CheckSymbolExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -std=c11 -MD -MT CMakeFiles/cmTC_baa1b.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_baa1b.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_baa1b.dir/CheckSymbolExists.c.o -c /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_baa1b
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_baa1b.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang CMakeFiles/cmTC_baa1b.dir/CheckSymbolExists.c.o -o cmTC_baa1b 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+File /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <sys/wait.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef wait
+  return ((int*)(&wait))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fe8ee/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fe8ee.dir/build.make CMakeFiles/cmTC_fe8ee.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fe8ee.dir/CheckFunctionExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -std=c11 -MD -MT CMakeFiles/cmTC_fe8ee.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_fe8ee.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_fe8ee.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_fe8ee
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe8ee.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_fe8ee.dir/CheckFunctionExists.c.o -o cmTC_fe8ee  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e1d20/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e1d20.dir/build.make CMakeFiles/cmTC_e1d20.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e1d20.dir/CheckFunctionExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -DCHECK_FUNCTION_EXISTS=gethostbyname -std=c11 -MD -MT CMakeFiles/cmTC_e1d20.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_e1d20.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_e1d20.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e1d20
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1d20.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_e1d20.dir/CheckFunctionExists.c.o -o cmTC_e1d20 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_ce86a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_ce86a.dir/build.make CMakeFiles/cmTC_ce86a.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ce86a.dir/CheckFunctionExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -DCHECK_FUNCTION_EXISTS=connect -std=c11 -MD -MT CMakeFiles/cmTC_ce86a.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_ce86a.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_ce86a.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ce86a
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce86a.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_ce86a.dir/CheckFunctionExists.c.o -o cmTC_ce86a 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c1d07/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c1d07.dir/build.make CMakeFiles/cmTC_c1d07.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c1d07.dir/CheckFunctionExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -DCHECK_FUNCTION_EXISTS=remove -std=c11 -MD -MT CMakeFiles/cmTC_c1d07.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_c1d07.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_c1d07.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c1d07
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c1d07.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_c1d07.dir/CheckFunctionExists.c.o -o cmTC_c1d07 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5e3e8/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5e3e8.dir/build.make CMakeFiles/cmTC_5e3e8.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5e3e8.dir/CheckFunctionExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -DCHECK_FUNCTION_EXISTS=shmat -std=c11 -MD -MT CMakeFiles/cmTC_5e3e8.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_5e3e8.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_5e3e8.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5e3e8
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e3e8.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_5e3e8.dir/CheckFunctionExists.c.o -o cmTC_5e3e8 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0b680/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0b680.dir/build.make CMakeFiles/cmTC_0b680.dir/build
+gmake[1]: Entering directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0b680.dir/CheckFunctionExists.c.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -std=c11 -MD -MT CMakeFiles/cmTC_0b680.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_0b680.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_0b680.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0b680
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b680.dir/link.txt --verbose=1
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/clang  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber CMakeFiles/cmTC_0b680.dir/CheckFunctionExists.c.o -o cmTC_0b680  -lICE 
+gmake[1]: Leaving directory '/data3/guifei/projects/goats/multiverse-dev/scripts/CMakeFiles/CMakeTmp'
+
+
+

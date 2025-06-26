@@ -1,0 +1,70 @@
+external/madrona/src/viz/CMakeFiles/imgui_impl.dir/__/__/external/imgui/backends/imgui_impl_vulkan.cpp.o: \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/imgui/backends/imgui_impl_vulkan.cpp \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/imgui/backends/imgui_impl_vulkan.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/imgui/imgui.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/imgui/imconfig.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/libcxx-madrona/include/c++/v1/float.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/libcxx-madrona/include/c++/v1/__config \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/libcxx-madrona/include/c++/v1/__config_site \
+  /usr/include/features.h /usr/include/features-time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/float.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/stdarg.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stdarg___gnuc_va_list.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stdarg_va_list.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stdarg_va_arg.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stdarg___va_copy.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stdarg_va_copy.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/libcxx-madrona/include/c++/v1/stddef.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/stddef.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stddef_ptrdiff_t.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stddef_size_t.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stddef_wchar_t.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stddef_null.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stddef_nullptr_t.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stddef_max_align_t.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/__stddef_offsetof.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/libcxx-madrona/include/c++/v1/string.h \
+  /usr/include/string.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/strings.h /usr/include/assert.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vulkan/vulkan.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vulkan/vk_platform.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/libcxx-madrona/include/c++/v1/stdint.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/lib/clang/18/include/stdint.h \
+  /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vulkan/vulkan_core.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_h264std.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codecs_common.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_h264std_encode.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_h265std.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_h265std_encode.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_h264std_decode.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_h265std_decode.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_av1std.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-deps/bundled-deps/vk_hdrs/include/vk_video/vulkan_video_codec_av1std_decode.h \
+  /data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/libcxx-madrona/include/c++/v1/stdio.h \
+  /usr/include/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h

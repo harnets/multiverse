@@ -1,0 +1,2 @@
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ar qc libmadrona_mw_gpu.a CMakeFiles/madrona_mw_gpu.dir/cpp_compile.cpp.o CMakeFiles/madrona_mw_gpu.dir/cuda_compile_helpers.cpp.o CMakeFiles/madrona_mw_gpu.dir/cuda_exec.cpp.o CMakeFiles/madrona_mw_gpu.dir/ext_gpu_mem.cpp.o
+/data3/guifei/projects/goats/multiverse-dev/external/madrona/external/madrona-toolchain/bundled-toolchain/toolchain/bin/llvm-ranlib libmadrona_mw_gpu.a

@@ -1,0 +1,17 @@
+    :
+      enumeratePhysicalDevices( reinterpret_cast<PFN_vkEnumeratePhysicalDevices>(checkPtr(get_inst_addr(ctx, "vkEnumeratePhysicalDevices"), "vkEnumeratePhysicalDevices"))),
+      enumerateDeviceExtensionProperties( reinterpret_cast<PFN_vkEnumerateDeviceExtensionProperties>(checkPtr(get_inst_addr(ctx, "vkEnumerateDeviceExtensionProperties"), "vkEnumerateDeviceExtensionProperties"))),
+      getPhysicalDeviceFeatures2( reinterpret_cast<PFN_vkGetPhysicalDeviceFeatures2>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceFeatures2"), "vkGetPhysicalDeviceFeatures2"))),
+      getPhysicalDeviceProperties( reinterpret_cast<PFN_vkGetPhysicalDeviceProperties>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceProperties"), "vkGetPhysicalDeviceProperties"))),
+      getPhysicalDeviceProperties2( reinterpret_cast<PFN_vkGetPhysicalDeviceProperties2>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceProperties2"), "vkGetPhysicalDeviceProperties2"))),
+      getPhysicalDeviceFormatProperties2( reinterpret_cast<PFN_vkGetPhysicalDeviceFormatProperties2>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceFormatProperties2"), "vkGetPhysicalDeviceFormatProperties2"))),
+      getPhysicalDeviceMemoryProperties2( reinterpret_cast<PFN_vkGetPhysicalDeviceMemoryProperties2>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceMemoryProperties2"), "vkGetPhysicalDeviceMemoryProperties2"))),
+      getPhysicalDeviceQueueFamilyProperties2( reinterpret_cast<PFN_vkGetPhysicalDeviceQueueFamilyProperties2>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceQueueFamilyProperties2"), "vkGetPhysicalDeviceQueueFamilyProperties2"))),
+      getInstanceProcAddr( get_inst_addr),
+      createDevice( reinterpret_cast<PFN_vkCreateDevice>(checkPtr(get_inst_addr(ctx, "vkCreateDevice"), "vkCreateDevice"))),
+      destroyInstance( reinterpret_cast<PFN_vkDestroyInstance>(checkPtr(get_inst_addr(ctx, "vkDestroyInstance"), "vkDestroyInstance"))),
+      destroySurfaceKHR(!support_present ? nullptr : reinterpret_cast<PFN_vkDestroySurfaceKHR>(checkPtr(get_inst_addr(ctx, "vkDestroySurfaceKHR"), "vkDestroySurfaceKHR"))),
+      getPhysicalDeviceSurfaceCapabilitiesKHR(!support_present ? nullptr : reinterpret_cast<PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR"), "vkGetPhysicalDeviceSurfaceCapabilitiesKHR"))),
+      getPhysicalDeviceSurfaceFormatsKHR(!support_present ? nullptr : reinterpret_cast<PFN_vkGetPhysicalDeviceSurfaceFormatsKHR>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceSurfaceFormatsKHR"), "vkGetPhysicalDeviceSurfaceFormatsKHR"))),
+      getPhysicalDeviceSurfacePresentModesKHR(!support_present ? nullptr : reinterpret_cast<PFN_vkGetPhysicalDeviceSurfacePresentModesKHR>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceSurfacePresentModesKHR"), "vkGetPhysicalDeviceSurfacePresentModesKHR"))),
+      getPhysicalDeviceSurfaceSupportKHR(!support_present ? nullptr : reinterpret_cast<PFN_vkGetPhysicalDeviceSurfaceSupportKHR>(checkPtr(get_inst_addr(ctx, "vkGetPhysicalDeviceSurfaceSupportKHR"), "vkGetPhysicalDeviceSurfaceSupportKHR")))
